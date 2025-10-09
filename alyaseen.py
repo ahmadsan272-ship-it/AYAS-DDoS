@@ -90,7 +90,7 @@ def countdown(t):
 
 # Validasi URL dan Parsing Target
 def get_target(url):
-    if not valid
+    if not valid:
     ators.url(url):
         log_attack_status(f"URL tidak valid: {url}", level='error')
         raise ValueError(f"URL tidak valid: {url}")
