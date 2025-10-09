@@ -54,6 +54,7 @@ f"{Fore.GREEN}  ╚═══════════════╝",
 f"{Fore.GREEN}",
 f"{Fore.GREEN}",
 f"{Fore.GREEN}",
+    ]
 # Tampilkan header dengan warna
     for line in header_lines:
         print(line)
