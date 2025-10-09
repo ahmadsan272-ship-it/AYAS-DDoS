@@ -26,7 +26,18 @@ class bcolors:
     
 os.system('clear')
 print("""      
-
+                 ╔ ╗
+                 ║ ║    ╔ ╗╔═   ═╗
+                 ║ ║    ║ ║       
+                 ║ ║    ║ ║
+                 ║ ║    ║ ║
+                 ║ ║    ║ ║
+                 ║ ║    ║ ║
+╔ ╗           ╔╝ ║    ║ ║
+║ ║           ║ ╔╝   ╚ ╝
+║ ║           ║ ║
+   ╚══════╝
+   ╚══════╝
 """)           
 if len(sys.argv) < 4:
     sys.exit("\033[96mUsage: python "+sys.argv[0]+" <ip> <port> <size>\033[0m")
