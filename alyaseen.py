@@ -35,30 +35,32 @@ def log_attack_status(message, level='info', print_to_terminal=True):
 # Fungsi untuk Menampilkan Header BASE dengan Warna
 def display_header():
     header_lines = [
-
-            
-             ║█ ║
-             ║█ ║
-             ║█ ║       
-             ║█ ║       
-             ║█ ║     ║████████ ║
-             ║█ ║     ║█ ╔══════╝
-             ║█ ║     ║████████ ║
-             ║████████████████ ║
-             ║█ ╔══════════════╝ 
-╔═╗           ███╗    
-║█ ║            █ ║
-║████████████████ ║
- ║██████████████ ║
- ╚═══════════════╝
-
+f"{Fore.GREEN}",
+f"{Fore.GREEN}             ╔═ ╗  ",         
+f"{Fore.GREEN}             ║█ ║  ",
+f"{Fore.GREEN}             ║█ ║  ",
+f"{Fore.GREEN}             ║█ ║  ",      
+f"{Fore.GREEN}             ║█ ║   ",    
+f"{Fore.GREEN}             ║█ ║     ║████████ ║",
+f"{Fore.GREEN}             ║█ ║     ║█ ╔══════╝",
+f"{Fore.GREEN}             ║█ ║     ║████████ ║",
+f"{Fore.GREEN}             ║████████████████ ║",
+f"{Fore.GREEN}            ║█ ╔══════════════╝", 
+f"{Fore.GREEN} ╔═ ╗         ███╗",    
+f"{Fore.GREEN} ║█ ║            █ ║",
+f"{Fore.GREEN} ║████████████████ ║",
+f"{Fore.GREEN}  ║██████████████ ║",
+f"{Fore.GREEN}  ╚═══════════════╝",
+f"{Fore.GREEN}",
+f"{Fore.GREEN}",
+f"{Fore.GREEN}",
 # Tampilkan header dengan warna
     for line in header_lines:
         print(line)
 
     # Versi dan URL
     print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 57}v.1.0")
-    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://github.com/ZA9474/BASEnews-DDoS.git")
+    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://githhub.com/ZA9474/BASEnews-DDoS.git")
     print(f"{Fore.CYAN}|{'=' * 74}|")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
@@ -87,7 +89,8 @@ def countdown(t):
 
 # Validasi URL dan Parsing Target
 def get_target(url):
-    if not validators.url(url):
+    if not valid
+  ators.url(url):
         log_attack_status(f"URL tidak valid: {url}", level='error')
         raise ValueError(f"URL tidak valid: {url}")
 
