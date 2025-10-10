@@ -37,33 +37,33 @@ print("""
                                               ║█ ║  
                                               ║█ ║  
                                               ║█ ║        
-              ╔═ ╗     ╔═ ╗      ╔═ ╗     ╔═ ╗║█ ║     ╔═════════╗
-              ║█ ║     ║█ ║      ║█ ║     ║█ ║║█ ║     ║████████ ║
-╔═ ╗          ║█████████ █████████ █████████ ║║█ ║     ║█ ╔══════╝
-║█ ║          ║████████ ║ ███████ ║ ███████ ║ ║█ ║     ║████████
-║█ ║          ║█ ╔═════╝  ╚══════╝╚╔═ ╗╔═ ╗╝  ║████████████████ ║
-║█ ║          ║█ ║                 ║█ ║║█ ║   ║█ ╔══════════════╝   
- ║███████████ ║                ╔═ ╗ ╚═ ╝╚═ ╝  ║███╗   
- ║██████████ ║                 ║█ ║             ║█ ║
-   ╚═════════╝                  ║████████████████ ║
-                                 ║██████████████ ║
-                                  ╚═════════════╝
+              ╔═ ╗     ╔═ ╗      ╔═ ╗     ╔═ ╗║█ ║     
+              ║█ ║     ║█ ║      ║█ ║     ║█ ║║█ ║    
+╔═ ╗          ║█████████ █████████ █████████ ║║█ ║
+║█ ║          ║████████ ║ ███████ ║ ███████ ║║█ ║
+║█ ║          ║█ ╔═════╝  ╚══════╝╚╔═ ╗╔═ ╗╝ ║█ ║
+║█ ║          ║█ ║                 ║█ ║║█ ║             ╚═ ╝
+ ║███████████ ║                  ╚═ ╝╚═ ╝   
+ ║██████████ ║                 
+   ╚═════════╝                  
+                            
+                            
 """)
 ip = input("[+] Target's IP : ")
 time.sleep(5),
-print("\033[94m            --⟩⟩ : IDRIB...!!! \033[0m "),
+print("\033[94m            --⟩⟩ : MENGENANG \033[0m "),
 time.sleep(5),
-print("\033[96m            --⟩⟩ : Iku fi'il amar \033[0m "),
+print("\033[96m            --⟩⟩ : SEORQNG PEJUANG ISLAM \033[0m "),
 time.sleep(5),
-print("\033[92m            --⟩⟩ : Kang tegese  pukulah...!! \033[0m "),
+print("\033[92m            --⟩⟩ : YANG TANGGUH \033[0m "),
 time.sleep(5),
-print("\033[33m            --⟩⟩ : Dadi sc iki kanggo nggebug arrogansi \033[0m "),
+print("\033[33m            --⟩⟩ : KETERBATASAN FISIK \033[0m "),
 time.sleep(5),
-print("\033[35m            --⟩⟩ : Kaum wedhus \033[0m "),
+print("\033[35m            --⟩⟩ : BUKAN ALASAN \033[0m "),
 time.sleep(5),
-print("\033[97m            --⟩⟩ : Sing seneng nglakoni sakarep udele \033[0m "),
+print("\033[97m            --⟩⟩ : UNTUK BANGKIT \033[0m "),
 time.sleep(5),
-print("\033[33m            --⟩⟩ : Monggo mbakyu, Maseh dikawiti Serangane...\033[0m")
+print("\033[33m            --⟩⟩ : MELAWAN PENINDASAN\033[0m")
 time.sleep(5)
 while True:
     sent = 0
