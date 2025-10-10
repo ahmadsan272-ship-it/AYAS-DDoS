@@ -51,19 +51,19 @@ print("""
 """)
 ip = input("\033[33m[+] Target's IP : ")
 time.sleep(5),
-print("\033[94m            --⟩⟩ : MENGENANG \033[0m "),
+print("\033[32m            --⟩⟩ : SCRIPT INI \033[0m "),
 time.sleep(5),
-print("\033[96m            --⟩⟩ : SEORQNG PEJUANG ISLAM \033[0m "),
+print("\033[33m            --⟩⟩ : DI DEDIKASIKAN UNTUK... \033[0m "),
 time.sleep(5),
-print("\033[92m            --⟩⟩ : YANG TANGGUH \033[0m "),
+print("\033[32m            --⟩⟩ : SEORANG PEJUANG YANG TANGGUH \033[0m "),
 time.sleep(5),
-print("\033[33m            --⟩⟩ : KETERBATASAN FISIK \033[0m "),
+print("\033[33m            --⟩⟩ : SEORANG BAPAK UNTUK PALESTINA \033[0m "),
 time.sleep(5),
-print("\033[35m            --⟩⟩ : BUKAN ALASAN \033[0m "),
+print("\033[32m            --⟩⟩ : BAPAK KEBANGKITAN \033[0m "),
 time.sleep(5),
-print("\033[97m            --⟩⟩ : UNTUK BANGKIT \033[0m "),
+print("\033[33m            --⟩⟩ : UNTUK SELURUH PEJUANG ISLAM \033[0m "),
 time.sleep(5),
-print("\033[33m            --⟩⟩ : MELAWAN PENINDASAN\033[0m")
+print("\033[32m            --⟩⟩ : DALAM MELAWAN PENINDASAN\033[0m")
 time.sleep(5)
 while True:
     sent = 0
