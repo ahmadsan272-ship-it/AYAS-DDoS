@@ -46,12 +46,12 @@ print("""
 \033[33m       ║\033[32m██████████\033[33m ║                 
 \033[33m        ╚═════════╝                  
 \033[32m╔═══════════════════════════════════════════════════════════╗                   
-\033[32m║\033[33m      A H M A D   Y A S E E N   S C R I P T   D D 0 S      \033[32m║
+\033[32m║\033[33m      Y A S E E N   T H U N D E R   S C R I P T   D D 0 S      \033[32m║
 \033[32m╚═══════════════════════════════════════════════════════════╝
 """)
 ip = input("\033[33m[+] Target's IP : ")
 time.sleep(5),
-print("\033[32m            --⟩⟩ : SCRIPT INI \033[0m "),
+print("\033[32m            --⟩⟩ : YASEEN THUNDER \033[0m "),
 time.sleep(5),
 print("\033[33m            --⟩⟩ : DI DEDIKASIKAN UNTUK... \033[0m "),
 time.sleep(5),
