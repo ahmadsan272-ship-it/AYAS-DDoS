@@ -51,11 +51,11 @@ print("""
 """)
 ip = input("\033[33m[+] Target's IP : ")
 time.sleep(5),
-print("\033[32m            --⟩⟩ : YASEEN THUNDER \033[0m "),
+print("\033[32m            --⟩⟩ : Yaseen thunder \033[0m "),
 time.sleep(5),
-print("\033[33m            --⟩⟩ : A WEAPON of MASS DESTRUCTION \033[0m "),
+print("\033[33m            --⟩⟩ : a weapon of mass destructions \033[0m "),
 time.sleep(5),
-print("\033[32m            --⟩⟩ : SEORANG PEJUANG YANG TANGGUH \033[0m "),
+print("\033[32m            --⟩⟩ : the most feared by the oppressors \033[0m "),
 time.sleep(5),
 print("\033[33m            --⟩⟩ : SEORANG BAPAK UNTUK PALESTINA \033[0m "),
 time.sleep(5),
