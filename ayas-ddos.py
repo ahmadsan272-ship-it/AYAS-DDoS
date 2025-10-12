@@ -63,7 +63,7 @@ print("\033[32m     a father for all Palestinians \033[0m "),
 time.sleep(5),
 print("\033[33m     So.... This script is a small dedication to the struggle \033[0m "),
 time.sleep(5),
-print("\033[32m      \033[0m")
+print("\033[32m     in memory of the great warriors in the path of Allah \033[0m")
 time.sleep(5)
 while True:
     sent = 0
