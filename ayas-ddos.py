@@ -45,7 +45,7 @@ print("""
 \033[33m      ║\033[32m███████████\033[33m ║                    ╚═ ╝╚═ ╝   
 \033[33m       ║\033[32m██████████\033[33m ║                 
 \033[33m        ╚═════════╝                  
-\033[32m╔═══════════════════════════════════════════════════════════╗                   
+\033[32m╔═══════════════════════════════════════════════════════════╗
 \033[32m║\033[33m  Y A S E E N   T H U N D E R   S C R I P T   D D 0 S      \033[32m║
 \033[32m╚═══════════════════════════════════════════════════════════╝
 """)
@@ -64,6 +64,8 @@ time.sleep(5),
 print("\033[33m     So.... This script is a small dedication to the struggle \033[0m "),
 time.sleep(5),
 print("\033[32m     in memory of the great warriors in the path of Allah \033[0m")
+time.sleep(5)
+print("\033[32m     ...\033[0m")
 time.sleep(5)
 while True:
     sent = 0
