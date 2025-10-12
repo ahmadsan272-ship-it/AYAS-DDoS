@@ -61,9 +61,9 @@ print("\033[33m     a weapon dedicated to a fighter for the revival of Al-Aqsa \
 time.sleep(5),
 print("\033[32m     a father for all Palestinians \033[0m "),
 time.sleep(5),
-print("\033[33m      \033[0m "),
+print("\033[33m     So.... This script is a small dedication to the struggle \033[0m "),
 time.sleep(5),
-print("\033[32m            --⟩⟩ : DALAM MELAWAN PENINDASAN\033[0m")
+print("\033[32m      \033[0m")
 time.sleep(5)
 while True:
     sent = 0
