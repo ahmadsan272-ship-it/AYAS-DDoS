@@ -48,8 +48,8 @@ async def test_url(url, proxy, concurrency=50, duration=60):
                         latencies.append(latency)
                         request_count += 1
                         print(f"\033[94m[+] Success | Status: {response.status} | Latency: {latency*1000:.2f}ms\033[0m")
-                        print(f"\033[32m {url} status {response.status}
-                        print(f"\033[32m {url} Latency: {latency*1000:.2f}
+                        print(f"\033[32m {url} status {response.status}")
+                        print(f"\033[32m {url} Latency: {latency*1000:2f}")
                 except Exception as e:
                     print(f"\033[91m[-] Request failed: {e}\033[0m")
             
