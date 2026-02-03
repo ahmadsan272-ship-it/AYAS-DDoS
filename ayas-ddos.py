@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import optparse
 import sys
 import time
@@ -42,7 +43,7 @@ def parse_options():
 
     if len(args) != 1:
         sys.stderr.write("No host supplied or incorrect number of arguments used.\nUse -h or --help for more information\n")
-        print args
+        print("args")
         sys.exit(1)
     
     OptionSet = DefaultOptions()
